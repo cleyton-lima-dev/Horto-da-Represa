@@ -372,12 +372,43 @@ body {
 }
 
 /* Slides (imagens) */
-.carousel-track img {
+/* Slide ocupa 100% da largura do carrossel */
+.carousel-slide{
+  position: relative;
   width: 100%;
-  height: 560px; /* altura retrato */
-  flex-shrink: 0;
-  object-fit: cover;
-  object-position: center;
+  flex: 0 0 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Fundo: mesma imagem, com zoom + blur (preenche as laterais) */
+.carousel-slide::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.2);      /* zoom */
+  filter: blur(18px);         /* desfoque */
+  opacity: 0.85;              /* controla força do fundo */
+}
+
+/* Overlay escuro leve pra melhorar contraste */
+.carousel-slide::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+
+/* Imagem principal na frente (sem cortar) */
+.carousel-slide img{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 560px;              /* mantém seu “card vertical” */
+  object-fit: contain;        /* NÃO corta */
   display: block;
 }
 
@@ -656,5 +687,6 @@ body {
   }
 
 }
+
 
 
