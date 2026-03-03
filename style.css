@@ -1,0 +1,657 @@
+/* =========================================================
+   HORTO DA REPRESA - STYLE.CSS (organizado e comentado)
+   Objetivo: manter o visual atual, só organizar/limpar.
+   ========================================================= */
+
+/* =========================================================
+   1) RESET + VARIÁVEIS GLOBAIS
+   ========================================================= */
+
+/* Reset básico: remove margens/paddings padrão e melhora box model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Paleta do site (troque aqui se quiser mudar as cores do projeto inteiro) */
+:root {
+  --verde-principal: #145a32;
+  --vermelho-principal: #8b0000;
+  --branco: #ffffff;
+  --bg: #f4f6f5;
+}
+
+/* Fonte e cor de fundo do site */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg);
+}
+
+/* =========================================================
+   2) HEADER (Topo do site)
+   ========================================================= */
+
+/* Container do header (logo + menu) */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 8%;
+  background-color: var(--verde-principal);
+  position: relative;
+  z-index: 10;
+}
+
+/* Logo em texto (clicável, leva para o topo) */
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--vermelho-principal);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+
+  /* Brilho leve no texto */
+  text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Lista do menu (itens lado a lado) */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Links do menu */
+.menu a {
+  font-size: 18px;
+  color: var(--branco);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+/* Hover do menu */
+.menu a:hover {
+  color: var(--vermelho-principal);
+}
+
+/* =========================================================
+   3) HERO (Capa / primeira seção)
+   ========================================================= */
+
+.hero {
+  margin-top: -10px; /* mantém o ajuste atual que você já estava usando */
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding: 140px 8%;
+  color: var(--branco);
+  overflow: hidden;
+}
+
+/* Limita a largura e controla quebra do título */
+.hero h1 {
+  line-height: 1.1;
+  max-width: 600px;
+}
+
+/* Destaque vermelho no trecho "Palmeiras Exóticas" */
+.hero-destaque {
+  color: var(--vermelho-principal);
+}
+
+/* “Tag”/pílula acima do título */
+.hero-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 14px;
+}
+
+/* Fundo da hero (imagem + gradiente para legibilidade do texto) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+    url("img/hero.jpg");
+  background-size: cover;
+  background-position: 60% 10%;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+/* Conteúdo da hero (texto e botões) */
+.hero__content {
+  position: relative; /* garante que fica acima do ::before */
+  max-width: 600px;
+}
+
+/* Título da hero */
+.hero__content h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Parágrafo da hero */
+.hero__content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Área dos botões da hero */
+.hero__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   4) BOTÕES (usados no site inteiro)
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  line-height: 1;
+  border: 1px solid transparent;
+}
+
+/* Botão principal (vermelho) */
+.btn--primary {
+  background-color: var(--vermelho-principal);
+  color: var(--branco);
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover do botão principal */
+.btn--primary:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Botão secundário (translúcido) */
+.btn--secondary {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--branco);
+  backdrop-filter: blur(6px);
+  transition: 0.2s;
+}
+
+/* Hover do botão secundário */
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================================
+   5) PRODUTOS (cards)
+   ========================================================= */
+
+.produtos {
+  padding: 80px 8%;
+}
+
+.produtos h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Subtítulo abaixo do H2 */
+.produtos-subtitulo {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+/* Grid dos cards */
+.produtos_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Card individual */
+.produto-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 20px;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover do card */
+.produto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do card */
+.produto-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+/* Título do card */
+.produto-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Texto do card */
+.produto-card .descricao {
+  flex: 1;
+  color: #555;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Botão dentro do card */
+.produto-card .btn {
+  margin-top: 12px;
+  align-self: flex-start;
+}
+
+/* =========================================================
+   6) SOBRE
+   ========================================================= */
+
+.sobre {
+  padding: 80px 8%;
+  background: white;
+}
+
+.sobre-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.sobre-texto h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.sobre-texto p {
+  margin-bottom: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.sobre-imagem img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* =========================================================
+   7) SERVIÇOS (Paisagismo) + CARROSSEL
+   ========================================================= */
+
+/* Container geral da seção (texto em cima, carrossel embaixo) */
+.servicos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Caixa do texto de serviços (centralizado, largura controlada) */
+.servicos-texto {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Título do serviços */
+.servicos-texto h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+/* Parágrafos do serviços */
+.servicos-texto p {
+  color: #555;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* Botão da seção serviços */
+.servicos-texto .btn {
+  margin-top: 10px;
+}
+
+/* ---------- Carrossel (VERSÃO FINAL: vertical/retrato) ---------- */
+
+/* Wrapper do carrossel */
+.carousel {
+  max-width: 420px; /* largura do “card” vertical */
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Faixa que “carrega” as imagens lado a lado */
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* Slides (imagens) */
+.carousel-track img {
+  width: 100%;
+  height: 560px; /* altura retrato */
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Botões do carrossel (voltar/avançar) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  z-index: 2;
+}
+
+/* Posição do botão anterior */
+.carousel-btn.prev {
+  left: 12px;
+}
+
+/* Posição do botão próximo */
+.carousel-btn.next {
+  right: 12px;
+}
+
+/* =========================================================
+   8) CONTATO
+   ========================================================= */
+
+.contato {
+  padding: 80px 8%;
+  background: var(--bg);
+}
+
+.contato h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.contato-card {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contato-card h3 {
+  margin-bottom: 10px;
+}
+
+.contato-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.endereco {
+  margin-bottom: 12px;
+}
+
+.horarios {
+  margin-bottom: 14px;
+}
+
+.horarios p {
+  margin-bottom: 6px;
+}
+
+.mapa {
+  margin-top: 15px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* CTA final dentro do contato */
+.contato-cta {
+  margin-top: 30px;
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contato-cta h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.contato-cta p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* =========================================================
+   9) FOOTER
+   ========================================================= */
+
+.footer {
+  background-color: var(--verde-principal);
+  color: var(--branco);
+  padding: 60px 8% 30px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+.footer-col h3 {
+  color: var(--vermelho-principal);
+  margin-bottom: 15px;
+}
+
+.footer-col h4 {
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: var(--branco);
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--vermelho-principal);
+}
+
+/* Botão/link do Instagram */
+.footer-social {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--branco);
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.footer-social:hover {
+  border-color: var(--vermelho-principal);
+  color: var(--vermelho-principal);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* =========================================================
+   10) RESPONSIVO (Tablet / Celular)
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .produtos_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* No HTML atual não existe .servicos-grid (removido) */
+  .contato-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+  /* Header em coluna */
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 6%;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .menu {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Hero mais compacta no celular */
+  .hero {
+    padding: 60px 5%;
+    min-height: auto;
+  }
+
+  .hero__content h1 {
+    font-size: 32px;
+  }
+
+  .hero__content p {
+    font-size: 16px;
+  }
+
+  /* Botões empilhados */
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Produtos em 1 coluna */
+  .produtos_grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .produto-card {
+    padding: 14px;
+  }
+
+  .produto-card img {
+    height: 200px;
+  }
+
+  /* Sobre em 1 coluna */
+  .sobre-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ajustes extras para telas muito pequenas */
+@media (max-width: 600px) {
+  /* Carrossel: ocupa quase toda a largura do celular */
+  .carousel {
+    max-width: 92vw;
+  }
+
+  /* Carrossel: limita altura no mobile */
+  .carousel-track img {
+    height: 70vh;
+    max-height: 640px;
+  }
+}
