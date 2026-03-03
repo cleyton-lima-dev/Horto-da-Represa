@@ -676,6 +676,7 @@ body {
   /* Carrossel: ocupa quase toda a largura do celular */
   .carousel {
     max-width: 92vw;
+    margin: 0 auto
   }
 
   /* Carrossel: limita altura no mobile */
@@ -684,3 +685,4 @@ body {
     max-height: 640px;
   }
 }
+
