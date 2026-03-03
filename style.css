@@ -127,7 +127,7 @@ body {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-    url("img/hero.jpg");
+    url("./img/hero.jpg");
   background-size: cover;
   background-position: 60% 10%;
   transform: scale(1.02);
@@ -654,4 +654,5 @@ body {
     height: 70vh;
     max-height: 640px;
   }
+
 }
