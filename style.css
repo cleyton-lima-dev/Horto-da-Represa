@@ -127,7 +127,7 @@ body {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
-     url("/Horto-da-Represa/img/hero.jpg");
+    url("img/hero.jpg");
   background-size: cover;
   background-position: 60% 10%;
   transform: scale(1.02);
@@ -356,10 +356,10 @@ body {
 
 /* Wrapper do carrossel */
 .carousel {
-  max-width: 420px; /* largura do “card” vertical */
+  max-width: none; /* largura do “card” vertical */
   width: 100%;
-  margin: 0 auto;
-  border-radius: 20px;
+  margin: 0;
+  border-radius: 0px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
@@ -371,7 +371,30 @@ body {
   transition: transform 0.4s ease;
 }
 
-/* Slides (imagens) */
+/* Botões do carrossel (voltar/avançar) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  z-index: 2;
+}
+
+/* Posição do botão anterior */
+.carousel-btn.prev {
+  left: 12px;
+}
+
+/* Posição do botão próximo */
+.carousel-btn.next {
+  right: 12px;
+}
 /* Slide ocupa 100% da largura do carrossel */
 .carousel-slide{
   position: relative;
@@ -410,31 +433,6 @@ body {
   height: 560px;              /* mantém seu “card vertical” */
   object-fit: contain;        /* NÃO corta */
   display: block;
-}
-
-/* Botões do carrossel (voltar/avançar) */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 0;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  z-index: 2;
-}
-
-/* Posição do botão anterior */
-.carousel-btn.prev {
-  left: 12px;
-}
-
-/* Posição do botão próximo */
-.carousel-btn.next {
-  right: 12px;
 }
 
 /* =========================================================
@@ -685,8 +683,4 @@ body {
     height: 70vh;
     max-height: 640px;
   }
-
 }
-
-
-
