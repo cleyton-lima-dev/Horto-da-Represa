@@ -107,7 +107,7 @@ body {
 
 /* Destaque vermelho no trecho "Palmeiras Exóticas" */
 .hero-destaque {
-  color: var(--vermelho-principal);
+  color: var(--branco);
 }
 
 /* “Tag”/pílula acima do título */
@@ -116,7 +116,7 @@ body {
   margin-bottom: 12px;
   padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgb(255, 255, 255);
   font-size: 14px;
 }
 
@@ -533,7 +533,7 @@ body {
 }
 
 .footer-col h3 {
-  color: var(--vermelho-principal);
+  color: var(--branco);
   margin-bottom: 15px;
 }
 
@@ -676,7 +676,6 @@ body {
   /* Carrossel: ocupa quase toda a largura do celular */
   .carousel {
     max-width: 92vw;
-    margin: 0 auto
   }
 
   /* Carrossel: limita altura no mobile */
@@ -685,4 +684,3 @@ body {
     max-height: 640px;
   }
 }
-
